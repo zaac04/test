@@ -16,7 +16,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
-      - run: zip -r lambda1.zip  .  -x .github/* .git/*
+      - run: zip -r lambda1.zip .  -x \*.git\* \*.github\* 
       - run: aws lambda update-function-code --function-name=test --region us-east-1 --zip-file=fileb://lambda1.zip
       - name: Sleep for 5 seconds
         run: sleep 5s
