@@ -18,5 +18,7 @@ jobs:
           aws-region: us-east-2
       - run: zip -j lambda1.zip ./lambda1/index.js
       - run: aws lambda update-function-code --function-name=test --region us-east-1 --zip-file=fileb://lambda1.zip
+      - name: Sleep for 5 seconds
+        run: sleep 5s
       - name: Release lambda function version
         run: aws lambda publish-version  --function-name=test --region us-east-1
